@@ -150,14 +150,57 @@
                     <div class="valor MM"></div>
                 </div>
             </div>
+			
+			<div class="row candidato BL">
+                <div class="col-xs-3">
+                    <div class="valor DS"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="indicador DS pull-left"></div>
+                    <div class="indicador MM pull-right"></div>
+                    <div id="sliderBL" class="dragdealer">
+                        <div class="handle"><img src="img/BL.jpg" alt="Voto en Blanco"></div>
+                    </div>
+                    <div id="sliderBL_B" class="dragdealer blanco">
+                        <div class="handle"><span class="valorB"></span></div>
+                    </div>
+                    <p>Mantienen voto en blanco</p>
+                </div>
+                <div class="col-xs-3">
+                    <div class="valor MM"></div>
+                </div>
+            </div>
+			<div class="row candidato AN">
+                <div class="col-xs-3">
+                    <div class="valor DS"></div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="indicador DS pull-left"></div>
+                    <div class="indicador MM pull-right"></div>
+                    <div id="sliderAN" class="dragdealer">
+                        <div class="handle"><img src="img/AN.jpg" alt="Anulado"></div>
+                    </div>
+                    <div id="sliderAN_B" class="dragdealer blanco">
+                        <div class="handle"><span class="valorB"></span></div>
+                    </div>
+                    <p>Mantiene voto anulado</p>
+                </div>
+                <div class="col-xs-3">
+                    <div class="valor MM"></div>
+                </div>
+            </div>
+			 
+		 
         </div>
         <div class="col-xs-12 col-sm-5 col-sm-offset-1 texto">
             <h4><span class="glyphicon glyphicon-info-sign"></span> Instrucciones</h4>
             <p>Deslizar las fotos de los candidatos para modificar los porcentajes. Los valores indican la proporción de votantes (entre los que votaron a cada candidato en la primera vuelta) que elegirá a cada candidato en la segunda vuelta. Para cada uno también puede indicarse la proporción de electores que votará en blanco, y los porcentajes asignados son relativos al total de votos que quedan restando los votos en blanco.</p>
+			<p>Para deleite de los randazzistas que no votaron Scioli en primera vuelta pero van a votarlo frente a Macri se agregaron los sliders de la gente que votó en blanco o anuló</p>
             <p>&nbsp;</p>
             <p><span class="glyphicon glyphicon-wrench"></span> Desarrollado por Luciano Amor [<a href="https://twitter.com/luchotuitea" target="_blank">@luchotuitea</a>]</p>
+			<p><span class="glyphicon glyphicon-wrench"></span> Modificado por Juan Microagencia [<a href="https://twitter.com/microagencia" target="_blank">@microagencia</a>]</p>
             <p><span class="glyphicon glyphicon-random"></span> Basado en una idea de Andy Tow [<a href="https://twitter.com/andy_tow" target="_blank">@andy_tow</a> / <a href="http://www.andytow.com" target="_blank"> andytow.com</a>]</p>
-            <p><span class="glyphicon glyphicon-gift"></span> <a href="https://www.github.com/lucianoamor/balotaje2015" target="_blank"> Código fuente</a> (licencia GNU GPL)</p>
+            <p><span class="glyphicon glyphicon-gift"></span> <a href="https://www.github.com/microagencia/balotaje2015" target="_blank"> Código fuente</a> (licencia GNU GPL)</p>
         </div>
     </div>
 </div>
@@ -166,12 +209,13 @@
 <script src="js/dragdealer.js"></script>
 <script src="js/sim.js"></script>
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-69681437-1', 'auto');
-    ga('send', 'pageview');
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-379692-5', 'auto');
+  ga('send', 'pageview');
+</script>
 </script>
 </body>
 </html>

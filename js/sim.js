@@ -12,7 +12,9 @@ $(document).ready(function() {
         'SM': 5386965,
         'DC': 812530,
         'MS': 632551,
-        'RS': 412577
+        'RS': 412577,
+		'BL': 664739,
+		'AN': 199446
     };
 
     var sliderDS = new Dragdealer('sliderDS', {
@@ -146,6 +148,50 @@ $(document).ready(function() {
             resultado(sliders, votos);
         }
     });
+	
+	var sliderBL = new Dragdealer('sliderBL', {
+        steps: steps,
+        x: ini,
+        animationCallback: function(x, y) {
+            actualizar(x, this);
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
+
+    var sliderBL_B = new Dragdealer('sliderBL_B', {
+        steps: steps,
+        x: 1,
+        animationCallback: function(x, y) {
+            $('#sliderBL_B .valorB').text(Math.round(x * 100)+' %');
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
+	
+	 var sliderAN = new Dragdealer('sliderAN', {
+        steps: steps,
+        x: ini,
+        animationCallback: function(x, y) {
+            actualizar(x, this);
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
+
+    var sliderAN_B = new Dragdealer('sliderAN_B', {
+        steps: steps,
+        x: 1,
+        animationCallback: function(x, y) {
+            $('#sliderAN_B .valorB').text(Math.round(x * 100)+' %');
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
 
     var sliders = {
         'DS': sliderDS,
@@ -154,12 +200,17 @@ $(document).ready(function() {
         'DC': sliderDC,
         'MS': sliderMS,
         'RS': sliderRS,
+		'BL': sliderBL,
+		'AN': sliderAN,
         'DSB': sliderDS_B,
         'MMB': sliderMM_B,
         'SMB': sliderSM_B,
         'DCB': sliderDC_B,
         'MSB': sliderMS_B,
-        'RSB': sliderRS_B
+        'RSB': sliderRS_B,
+		'BLB': sliderBL_B,
+		'ANB': sliderAN_B,
+
     };
 
     // ini
@@ -169,6 +220,8 @@ $(document).ready(function() {
     actualizar(ini, sliderDC);
     actualizar(ini, sliderMS);
     actualizar(ini, sliderRS);
+	actualizar(ini, sliderBL);
+	actualizar(ini, sliderAN);
     resultado(sliders, votos);
 
 });
@@ -196,12 +249,16 @@ function resultado(sliders, votos) {
         vDC = sliders.DC.getValue()[0],
         vMS = sliders.MS.getValue()[0],
         vRS = sliders.RS.getValue()[0],
+		vBL = sliders.BL.getValue()[0],
+		vAN = sliders.AN.getValue()[0],
         bDS = sliders.DSB.getValue()[0],
         bMM = sliders.MMB.getValue()[0],
         bSM = sliders.SMB.getValue()[0],
         bDC = sliders.DCB.getValue()[0],
         bMS = sliders.MSB.getValue()[0],
-        bRS = sliders.RSB.getValue()[0];
+        bRS = sliders.RSB.getValue()[0],
+		bAN = sliders.BLB.getValue()[0],
+		bBL = sliders.ANB.getValue()[0];
 
     var tDS;
     tDS = votos.DS - (votos.DS * bDS);
@@ -231,7 +288,18 @@ function resultado(sliders, votos) {
     tRS = votos.RS - (votos.RS * bRS);
     tDS += tRS * (1 - vRS);
     tMM += tRS * vRS;
+	console.log("Antes: " + tMM);
+	var tBL;
+    tBL = votos.BL - (votos.BL * bBL);
+    tDS += tBL * (1 - vBL);
+    tMM += tBL * vBL;
 
+	var tAN;
+    tAN = votos.AN - (votos.AN * bAN);
+    tDS += tAN * (1 - vAN);
+    tMM += tAN * vAN;
+	console.log("Despues: " + tMM);
+	
     var total = tDS + tMM,
         pDS = tDS / total * 100,
         pMM = tMM / total * 100;

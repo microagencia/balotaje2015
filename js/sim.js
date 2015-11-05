@@ -444,7 +444,7 @@ function resultado(sliders, votos) {
 			ganador = "y me dió que gana Macri";
         }
     }
-	var texto  = "Simulé el balotaje " + ganador + ". Mirá mi simulación: http://microagencia.github.io/balotaje2015/?v=" + v;
+	var texto  = "Simulé el balotaje " + ganador + ". Mirá mi simulación: http://lucianoamor.github.io/balotaje2015/?v=" + v;
  
 	$('#twlink').attr("href", "https://twitter.com/intent/tweet?text=" + encodeURIComponent(texto));
 }

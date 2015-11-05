@@ -153,13 +153,13 @@ body {
 }
 /* --- */
 .BL .dragdealer .handle img {
-    border-color: #000000;
+    border-color: #DDDDDD;
 }
 .BL.indicador {
-    background-color: #000000;
+    background-color: #DDDDDD;
 }
 .BL.valor {
-    color: #000000;
+    color: #DDDDDD;
 }
 /* --- */
 .AN .dragdealer .handle img {
@@ -170,4 +170,14 @@ body {
 }
 .AN.valor {
     color: #FF0000;
+}
+/* --- */
+.AU .dragdealer .handle img {
+    border-color: #000000;
+}
+.AU.indicador {
+    background-color: #000000;
+}
+.AU.valor {
+    color: #000000;
 }

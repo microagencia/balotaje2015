@@ -1,11 +1,78 @@
-$(document).ready(function() {
-
+﻿$(document).ready(function() {
+	
+	
+	var param = getParameterByName('v');
+	
+	
     var iniDS = 0,
-        iniMM = 1,
-        iniBL = 0,
+        iniBLDS = 0,
+		iniMM = 1,
+		iniBLMM = 0,
+		iniSM = .5,
+		iniBLSM = 0,
+		iniDC = .5,
+		iniBLDC = 0,
+		iniMS = .5,
+		iniBLMS = 0,
+		iniRS = .5,
+		iniBLRS = 0,
+		iniRS = .5,
+		iniBLRS = 0,
+		iniBL = .5,
+		iniBLBL = 1,
+		iniAN = .5,
+		iniBLAN = 1,
+		iniAU = .5,
+		iniBLAU = 1,
+		
         ini   = .5,
+		
+		
         steps = 101;
 
+	//TODO pasar esto a un array
+	/*console.log(param.length);
+	console.log(8 * 2 * 3);*/
+	if(param.length == (9 * 2 * 3)){
+	    var i = 0;
+		iniDS = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniBLDS = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniMM = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniBLMM = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniSM = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniBLSM = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniDC = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniBLDC = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniMS = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniBLMS = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniRS = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniBLRS = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniBL =  Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniBLBL = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniAN = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniBLAN = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniAU = Number(param.substring(i, i+3))/100;
+		i = i+3;
+		iniBLAU = Number(param.substring(i, i+3))/100;
+	}
+		
+		
     var votos = {
         'DS': 9338449,
         'MM': 8601063,
@@ -14,7 +81,8 @@ $(document).ready(function() {
         'MS': 632551,
         'RS': 412577,
 		'BL': 664739,
-		'AN': 199446
+		'AN': 199446,
+		'AU': 6015089
     };
 
     var sliderDS = new Dragdealer('sliderDS', {
@@ -30,7 +98,7 @@ $(document).ready(function() {
 
     var sliderDS_B = new Dragdealer('sliderDS_B', {
         steps: steps,
-        x: iniBL,
+        x: iniBLDS,
         animationCallback: function(x, y) {
             $('#sliderDS_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -52,7 +120,7 @@ $(document).ready(function() {
 
     var sliderMM_B = new Dragdealer('sliderMM_B', {
         steps: steps,
-        x: iniBL,
+        x: iniBLMM,
         animationCallback: function(x, y) {
             $('#sliderMM_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -63,7 +131,7 @@ $(document).ready(function() {
 
     var sliderSM = new Dragdealer('sliderSM', {
         steps: steps,
-        x: ini,
+        x: iniSM,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -74,7 +142,7 @@ $(document).ready(function() {
 
     var sliderSM_B = new Dragdealer('sliderSM_B', {
         steps: steps,
-        x: iniBL,
+        x: iniBLSM,
         animationCallback: function(x, y) {
             $('#sliderSM_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -85,7 +153,7 @@ $(document).ready(function() {
 
     var sliderDC = new Dragdealer('sliderDC', {
         steps: steps,
-        x: ini,
+        x: iniDC,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -96,7 +164,7 @@ $(document).ready(function() {
 
     var sliderDC_B = new Dragdealer('sliderDC_B', {
         steps: steps,
-        x: iniBL,
+        x: iniBLDC,
         animationCallback: function(x, y) {
             $('#sliderDC_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -107,7 +175,7 @@ $(document).ready(function() {
 
     var sliderMS = new Dragdealer('sliderMS', {
         steps: steps,
-        x: ini,
+        x: iniMS,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -118,7 +186,7 @@ $(document).ready(function() {
 
     var sliderMS_B = new Dragdealer('sliderMS_B', {
         steps: steps,
-        x: iniBL,
+        x: iniBLMS,
         animationCallback: function(x, y) {
             $('#sliderMS_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -129,7 +197,7 @@ $(document).ready(function() {
 
     var sliderRS = new Dragdealer('sliderRS', {
         steps: steps,
-        x: ini,
+        x: iniRS,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -140,7 +208,7 @@ $(document).ready(function() {
 
     var sliderRS_B = new Dragdealer('sliderRS_B', {
         steps: steps,
-        x: iniBL,
+        x: iniBLRS,
         animationCallback: function(x, y) {
             $('#sliderRS_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -151,7 +219,7 @@ $(document).ready(function() {
 	
 	var sliderBL = new Dragdealer('sliderBL', {
         steps: steps,
-        x: ini,
+        x: iniBL,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -162,7 +230,7 @@ $(document).ready(function() {
 
     var sliderBL_B = new Dragdealer('sliderBL_B', {
         steps: steps,
-        x: 1,
+        x: iniBLBL,
         animationCallback: function(x, y) {
             $('#sliderBL_B .valorB').text(Math.round(x * 100)+' %');
         },
@@ -173,7 +241,7 @@ $(document).ready(function() {
 	
 	 var sliderAN = new Dragdealer('sliderAN', {
         steps: steps,
-        x: ini,
+        x: iniAN,
         animationCallback: function(x, y) {
             actualizar(x, this);
         },
@@ -184,9 +252,31 @@ $(document).ready(function() {
 
     var sliderAN_B = new Dragdealer('sliderAN_B', {
         steps: steps,
-        x: 1,
+        x: iniBLAN,
         animationCallback: function(x, y) {
             $('#sliderAN_B .valorB').text(Math.round(x * 100)+' %');
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
+	
+	var sliderAU = new Dragdealer('sliderAU', {
+        steps: steps,
+        x: iniAU,
+        animationCallback: function(x, y) {
+            actualizar(x, this);
+        },
+        dragStopCallback: function(x, y) {
+            resultado(sliders, votos);
+        }
+    });
+
+    var sliderAU_B = new Dragdealer('sliderAU_B', {
+        steps: steps,
+        x: iniBLAU,
+        animationCallback: function(x, y) {
+            $('#sliderAU_B .valorB').text(Math.round(x * 100)+' %');
         },
         dragStopCallback: function(x, y) {
             resultado(sliders, votos);
@@ -202,6 +292,7 @@ $(document).ready(function() {
         'RS': sliderRS,
 		'BL': sliderBL,
 		'AN': sliderAN,
+		'AU': sliderAU,
         'DSB': sliderDS_B,
         'MMB': sliderMM_B,
         'SMB': sliderSM_B,
@@ -210,18 +301,20 @@ $(document).ready(function() {
         'RSB': sliderRS_B,
 		'BLB': sliderBL_B,
 		'ANB': sliderAN_B,
+		'AUB': sliderAU_B
 
     };
 
     // ini
     actualizar(iniDS, sliderDS);
     actualizar(iniMM, sliderMM);
-    actualizar(ini, sliderSM);
-    actualizar(ini, sliderDC);
-    actualizar(ini, sliderMS);
-    actualizar(ini, sliderRS);
-	actualizar(ini, sliderBL);
-	actualizar(ini, sliderAN);
+    actualizar(iniSM, sliderSM);
+    actualizar(iniDC, sliderDC);
+    actualizar(iniMS, sliderMS);
+    actualizar(iniRS, sliderRS);
+	actualizar(iniBL, sliderBL);
+	actualizar(iniAN, sliderAN);
+	actualizar(iniAU, sliderAU);
     resultado(sliders, votos);
 
 });
@@ -251,15 +344,34 @@ function resultado(sliders, votos) {
         vRS = sliders.RS.getValue()[0],
 		vBL = sliders.BL.getValue()[0],
 		vAN = sliders.AN.getValue()[0],
+		vAU = sliders.AU.getValue()[0],
         bDS = sliders.DSB.getValue()[0],
         bMM = sliders.MMB.getValue()[0],
         bSM = sliders.SMB.getValue()[0],
         bDC = sliders.DCB.getValue()[0],
         bMS = sliders.MSB.getValue()[0],
         bRS = sliders.RSB.getValue()[0],
-		bAN = sliders.BLB.getValue()[0],
-		bBL = sliders.ANB.getValue()[0];
+		bBL = sliders.BLB.getValue()[0],
+		bAN = sliders.ANB.getValue()[0];
+		bAU = sliders.AUB.getValue()[0];
 
+
+	var v = nF(vDS)+nF(bDS)+
+			nF(vMM)+nF(bMM)+
+			nF(vSM)+nF(bSM)+
+			nF(vDC)+nF(bDC)+
+			nF(vMS)+nF(bMS)+
+			nF(vRS)+nF(bRS)+
+			nF(vBL)+nF(bBL)+
+			nF(vAN)+nF(bAN)+
+			nF(vAU)+nF(bAU);
+			
+	 
+	
+	
+	
+	
+	
     var tDS;
     tDS = votos.DS - (votos.DS * bDS);
     tDS *= 1 - vDS;
@@ -288,7 +400,7 @@ function resultado(sliders, votos) {
     tRS = votos.RS - (votos.RS * bRS);
     tDS += tRS * (1 - vRS);
     tMM += tRS * vRS;
-	console.log("Antes: " + tMM);
+	
 	var tBL;
     tBL = votos.BL - (votos.BL * bBL);
     tDS += tBL * (1 - vBL);
@@ -298,7 +410,12 @@ function resultado(sliders, votos) {
     tAN = votos.AN - (votos.AN * bAN);
     tDS += tAN * (1 - vAN);
     tMM += tAN * vAN;
-	console.log("Despues: " + tMM);
+	
+	var tAU;
+    tAU = votos.AU - (votos.AU * bAU);
+    tDS += tAU * (1 - vAU);
+    tMM += tAU * vAU;
+	
 	
     var total = tDS + tMM,
         pDS = tDS / total * 100,
@@ -309,7 +426,7 @@ function resultado(sliders, votos) {
 
     $('.resultados').find('.valor.DS').text(pDS.toFixed(2) + '%');
     $('.resultados').find('.valor.MM').text(pMM.toFixed(2) + '%');
-
+    var ganador = "";
     if(pDS !== 50) {
         if(pDS > 50) {
             divDS.css('font-weight', 'bold');
@@ -317,13 +434,30 @@ function resultado(sliders, votos) {
             divDS.siblings('h2').css('font-weight', 'bold');
             divMM.siblings('h2').css('font-weight', 'normal');
             divDS.parent().siblings('.glyphicon').removeClass('glyphicon-hand-right').addClass('glyphicon-hand-left');
+			ganador = "y me dió que gana Scioli";
         } else {
             divDS.css('font-weight', 'normal');
             divMM.css('font-weight', 'bold');
             divDS.siblings('h2').css('font-weight', 'normal');
             divMM.siblings('h2').css('font-weight', 'bold');
             divMM.parent().siblings('.glyphicon').removeClass('glyphicon-hand-left').addClass('glyphicon-hand-right');
+			ganador = "y me dió que gana Macri";
         }
     }
+	var texto  = "Simulé el balotaje " + ganador + ". Mirá mi simulación: http://microagencia.github.io/balotaje2015/?v=" + v;
+ 
+	$('#twlink').attr("href", "https://twitter.com/intent/tweet?text=" + encodeURIComponent(texto));
+}
+ 
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function nF(num) {
+	var s = "" + num + "000";
+	return s.slice(0, 1) + s.slice(2, 4);
 }

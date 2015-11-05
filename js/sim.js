@@ -372,14 +372,27 @@ function resultado(sliders, votos) {
 	
 	
 	
-    var tDS;
+    /*var tDS;
     tDS = votos.DS - (votos.DS * bDS);
-    tDS *= 1 - vDS;
+    tDS *= 1 - vDS;*/
+	
+	var tDS0;
+    tDS0 = votos.DS - (votos.DS * bDS);
 
-    var tMM;
+/*    var tMM;
     tMM = votos.MM - (votos.MM * bMM);
-    tMM *= vMM;
+    tMM *= vMM;*/
 
+	var tMM0;
+    tMM0 = votos.MM - (votos.MM * bMM);
+	
+	var tDS = 0;
+    tDS += tDS0 * (1 - vDS);
+    tDS += tMM0 * (1 - vMM);
+
+    var tMM = 0;
+    tMM += tMM0 * vMM;
+    tMM += tDS0 * vDS;
 
     var tSM;
     tSM = votos.SM - (votos.SM * bSM);
@@ -444,7 +457,7 @@ function resultado(sliders, votos) {
 			ganador = "y me dió que gana Macri";
         }
     }
-	var texto  = "Simulé el balotaje " + ganador + ". Mirá mi simulación: http://lucianoamor.github.io/balotaje2015/?v=" + v;
+	var texto  = "Simulé el balotaje " + ganador + ". Mirá mi simulación: http://microagencia.github.io/balotaje2015/?v=" + v;
  
 	$('#twlink').attr("href", "https://twitter.com/intent/tweet?text=" + encodeURIComponent(texto));
 }
